@@ -1,2 +1,4 @@
 train_tisv_norm_vox1.tar.gz
 train_tisv_norm
+.ipynb_checkpoints
+ __pycache__

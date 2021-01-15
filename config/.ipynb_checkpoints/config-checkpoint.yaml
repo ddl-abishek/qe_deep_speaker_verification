@@ -3,7 +3,7 @@ device: "cuda"
 unprocessed_data: '../../VoxCeleb2/wav/*/*/*.wav'
 ---
 data:
-    train_path: './train_tisv_norm'
+    train_path: '/mnt/nfs-pvc-dsp/train_tisv_norm'
     train_path_unprocessed: '../../VoxCeleb2/wav/dev/*/*.wav'
     test_path: './test_tisv_norm_vox1_vox2'
     test_path_unprocessed: '../../VoxCeleb2/wav/test/*/*.wav'
@@ -19,7 +19,7 @@ model:
     hidden: 768 #Number of LSTM hidden layer units
     num_layer: 3 #Number of LSTM layers
     proj: 256 #Embedding size
-    model_path: './speech_id_checkpoint_vox1_vox2/ckpt_epoch_30_batch_id_180115-Aug-2020_01:38:13.420387.pth' #Model path for testing, inference, or resuming training
+    model_path: './speech_id_checkpoint_vox1/ckpt_epoch_30_batch_id_180115-Aug-2020_01:38:13.420387.pth' #Model path for testing, inference, or resuming training
 ---
 train:
     N : 4 #Number of speakers in batch
@@ -28,9 +28,9 @@ train:
     lr: 0.001
     epochs: 950 #Max training speaker epoch 
     log_interval: 30 #Epochs before printing progress
-    log_file: './speech_id_checkpoint_vox1_vox2/Stats'
+    log_file: './speech_id_checkpoint_vox1/Stats'
     checkpoint_interval: 1 #Save model after x speaker epochs
-    checkpoint_dir: './speech_id_checkpoint_vox1_vox2'
+    checkpoint_dir: './speech_id_checkpoint_vox1'
     restore: !!bool "true" #Resume training from previous model path
 ---
 test:
