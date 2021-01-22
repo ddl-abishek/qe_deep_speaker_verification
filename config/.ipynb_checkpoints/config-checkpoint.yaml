@@ -31,10 +31,10 @@ train:
     log_file: './speech_id_checkpoint_vox1/Stats'
     checkpoint_interval: 1 #Save model after x speaker epochs
     checkpoint_dir: './speech_id_checkpoint_vox1'
-    restore: !!bool "true" #Resume training from previous model path
+    restore: !!bool "false" #Resume training from previous model path
 ---
 test:
     N : 4 #Number of speakers in batch
-    M : 6 #Number of utterances per speaker
+    M : 5 #Number of utterances per speaker
     num_workers: 8 #number of workers for data laoder
     epochs: 10 #testing speaker epochs
