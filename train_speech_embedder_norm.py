@@ -13,7 +13,7 @@ from torch.utils.tensorboard import SummaryWriter
 from datetime import datetime
 
 def train(model_path):
-	writer = SummaryWriter(log_dir='./runs_norm_vox1_vox2')
+	writer = SummaryWriter(log_dir='/mnt/artifacts/results/runs_norm_vox1_vox2')
 	device = torch.device(hp.device)
 
 	if hp.data.data_preprocessed:
@@ -57,6 +57,7 @@ def train(model_path):
 
 
 		for batch_id, mel_db_batch in enumerate(train_loader):
+# 			import pdb; pdb.set_trace()
 			steps += 1
 			# Move input and label tensors to the default device
 			mel_db_batch = mel_db_batch.to(device)
