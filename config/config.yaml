@@ -1,5 +1,5 @@
 training: !!bool "true"
-device: "cuda"
+device: "cpu"
 unprocessed_data: '../../VoxCeleb2/wav/*/*/*.wav'
 ---
 data:
