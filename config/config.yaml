@@ -3,9 +3,9 @@ device: "cuda"
 unprocessed_data: '../../VoxCeleb2/wav/*/*/*.wav'
 ---
 data:
-    train_path: '/mnt/data/VoxCeleb1-out/train_tisv_norm'
+    train_path: '/mnt/data/VoxCeleb1/train_tisv_norm'
     train_path_unprocessed: '../../VoxCeleb2/wav/dev/*/*.wav'
-    test_path: '/mnt/data/VoxCeleb1-out/test_tisv_norm'
+    test_path: '/mnt/data/VoxCeleb1/test_tisv_norm'
     test_path_unprocessed: '../../VoxCeleb2/wav/test/*/*.wav'
     data_preprocessed: !!bool "true" 
     sr: 16000
