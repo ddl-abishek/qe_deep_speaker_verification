@@ -9,4 +9,4 @@ args = parser.parse_args()
 
 for _ in range(args.num_artifacts):
     os.system(f"sudo touch /mnt/artifacts/results/{str(datetime.now()).replace(' ','').replace('.','')}.txt")
-    time.sleep(2)
+    time.sleep(0.5)
