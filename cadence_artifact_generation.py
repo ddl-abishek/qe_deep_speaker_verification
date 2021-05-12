@@ -8,5 +8,5 @@ parser.add_argument("num_artifacts",help="number of artifacts/textfiles to gener
 args = parser.parse_args()
 
 for _ in range(args.num_artifacts):
-    os.system(f"sudo touch /mnt/artifacts/results/{str(datetime.now())}.txt")
-    time.sleep(5)
+    os.system(f"sudo touch /mnt/artifacts/results/{str(datetime.now()).replace(' ','').replace('.','')}.txt")
+    time.sleep(2)
