@@ -147,12 +147,14 @@ class Train:
 
         writer.close()
 
+
+
+#train(hp.model.model_path)
+ray.init()
 model_train = Train
 model_train.train(hp.model.model_path)
 
 
-#train(hp.model.model_path)
-# ray.init()
 # trainer = TorchTrainer(training_operator_cls=Train)
 
 # stats = trainer.train()
