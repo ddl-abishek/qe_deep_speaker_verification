@@ -17,7 +17,7 @@ from ray.util.sgd.torch import TorchTrainer, TrainingOperator
 
 class Train:
 
-    def train(model_path):
+    def train(model_path=hp.model.model_path):
         writer = SummaryWriter(log_dir='/mnt/artifacts/results/runs_norm_vox1')
         device = torch.device(hp.device)
 
@@ -151,10 +151,10 @@ class Train:
 
 #train(hp.model.model_path)
 ray.init()
-model_train = Train
-model_train.train(hp.model.model_path)
+# model_train = Train
+# model_train.train(hp.model.model_path)
 
 
-# trainer = TorchTrainer(training_operator_cls=Train)
+trainer = TorchTrainer(training_operator_cls=Train)
 
-# stats = trainer.train()
+stats = trainer.train()
