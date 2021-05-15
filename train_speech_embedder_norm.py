@@ -13,7 +13,7 @@ from torch.utils.tensorboard import SummaryWriter
 from datetime import datetime
 
 def train(model_path):
-	writer = SummaryWriter(log_dir='/mnt/artifacts/results/runs_norm_vox1_vox2')
+	writer = SummaryWriter(log_dir='/mnt/artifacts/results/runs_norm_vox1')
 	device = torch.device(hp.device)
 
 	if hp.data.data_preprocessed:
