@@ -27,7 +27,7 @@ train:
     num_workers: 0 #number of workers for dataloader
     lr: 0.001
     epochs: 950 #Max training speaker epoch 
-    log_interval: 30 #Epochs before printing progress
+    log_interval: 1 #Epochs before printing progress
     log_file: '/mnt/artifacts/results/speech_id_checkpoint_vox1/Stats'
     checkpoint_interval: 1 #Save model after x speaker epochs
     checkpoint_dir: '/mnt/artifacts/results/speech_id_checkpoint_vox1'
