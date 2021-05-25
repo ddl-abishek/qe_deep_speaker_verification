@@ -137,6 +137,7 @@ class Train:
                 torch.save(embedder_net.state_dict(), ckpt_model_path)
                 embedder_net.to(device).train()
 
+
         #save model
         embedder_net.eval().cpu()
         save_model_filename = "final_epoch_" + str(epoch + 1) + "_batch_id_" + str(batch_id + 1) + ".model"
@@ -146,15 +147,23 @@ class Train:
         print("\nDone, trained model saved at", save_model_path)
 
         writer.close()
+        
+        self.model, self.optimizer, self.criterion = self.register(models=embedder_net, optimizers=optimizer, criterion=ge2e_loss)
+        self.register_data(train_loader=train_loader, validation_loader=val_loader)
+
+        
 
 
+if ray.is_initialized() == False:
+        print("Connecting to Ray cluster...")
+        service_host = os.environ["RAY_HEAD_SERVICE_HOST"]
+        service_port = os.environ["RAY_HEAD_SERVICE_PORT"]
+        ray.util.connect(f"{service_host}:{service_port}")
 
-#train(hp.model.model_path)
-ray.init()
 # model_train = Train
 # model_train.train(hp.model.model_path)
 
 
 trainer = TorchTrainer(training_operator_cls=Train)
+trainer.train()
 
-stats = trainer.train()
