@@ -1,4 +1,3 @@
-
 """Example code for RaySGD Torch in the documentation.
 It ignores yapf because yapf doesn't allow comments right after code blocks,
 but we put comments right after code blocks to prevent large white spaces
@@ -120,8 +119,6 @@ if __name__ == "__main__":
         help="Finish quickly for testing.")
 
     args, _ = parser.parse_known_args()
-    
-    breakpoint()
 
     import ray
     if args.smoke_test:

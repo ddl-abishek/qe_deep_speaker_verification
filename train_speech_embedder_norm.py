@@ -15,9 +15,14 @@ from datetime import datetime
 import ray
 from ray.util.sgd.torch import TorchTrainer, TrainingOperator
 
-class Train:
+if ray.is_initialized() == False:
+        print("Connecting to Ray cluster...")
+        service_host = os.environ["RAY_HEAD_SERVICE_HOST"]
+        service_port = os.environ["RAY_HEAD_SERVICE_PORT"]
+        ray.util.connect(f"{service_host}:{service_port}")
 
-    def train(model_path=hp.model.model_path):
+class Train:
+    def setup(self,model_path=hp.model.model_path):
         writer = SummaryWriter(log_dir='/mnt/artifacts/results/runs_norm_vox1')
         device = torch.device(hp.device)
 
@@ -49,6 +54,9 @@ class Train:
         os.makedirs(hp.train.checkpoint_dir, exist_ok=True)
 
         embedder_net.train()
+
+        self.model, self.optimizer, self.criterion = self.register(models=embedder_net, optimizers=optimizer, criterion=ge2e_loss)
+        self.register_data(train_loader=train_loader, validation_loader=val_loader)
 
         steps = 0
         running_loss = 0
@@ -147,23 +155,11 @@ class Train:
         print("\nDone, trained model saved at", save_model_path)
 
         writer.close()
-        
-        self.model, self.optimizer, self.criterion = self.register(models=embedder_net, optimizers=optimizer, criterion=ge2e_loss)
-        self.register_data(train_loader=train_loader, validation_loader=val_loader)
 
-        
-
-
-if ray.is_initialized() == False:
-        print("Connecting to Ray cluster...")
-        service_host = os.environ["RAY_HEAD_SERVICE_HOST"]
-        service_port = os.environ["RAY_HEAD_SERVICE_PORT"]
-        ray.util.connect(f"{service_host}:{service_port}")
 
 # model_train = Train
 # model_train.train(hp.model.model_path)
 
+trainer = TorchTrainer(training_operator_cls=Train,num_workers=3,use_gpu=False)
 
-trainer = TorchTrainer(training_operator_cls=Train)
-trainer.train()
-
+# trainer.train()
