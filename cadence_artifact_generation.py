@@ -10,3 +10,6 @@ args = parser.parse_args()
 for _ in range(args.num_artifacts):
     os.system(f"sudo touch /mnt/artifacts/results/{str(datetime.now()).replace(' ','').replace('.','')}.txt")
     time.sleep(0.5)
+
+# usage : (you can replace 1000 with any number you want)
+# python cadence_artifact_generation.py 1000
