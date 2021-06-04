@@ -19,7 +19,7 @@ model:
     hidden: 768 #Number of LSTM hidden layer units
     num_layer: 3 #Number of LSTM layers
     proj: 256 #Embedding size
-    model_path: '/mnt/artifacts/results/speech_id_checkpoint_vox1/ckpt_epoch_30_batch_id_180115-Aug-2020_01:38:13.420387.pth' #Model path for testing, inference, or resuming training
+    model_path: '/mnt/data/${DOMINO_PROJECT_NAME}/speech_id_checkpoint_vox1/ckpt_epoch_30_batch_id_180115-Aug-2020_01:38:13.420387.pth' #Model path for testing, inference, or resuming training
 ---
 train:
     N : 4 #Number of speakers in batch
@@ -28,9 +28,9 @@ train:
     lr: 0.001
     epochs: 950 #Max training speaker epoch 
     log_interval: 30 #Epochs before printing progress
-    log_file: '/mnt/artifacts/results/speech_id_checkpoint_vox1/Stats'
+    log_file: '/mnt/data/${DOMINO_PROJECT_NAME}/speech_id_checkpoint_vox1/Stats'
     checkpoint_interval: 10 #Save model after x speaker epochs
-    checkpoint_dir: '/mnt/artifacts/results/speech_id_checkpoint_vox1'
+    checkpoint_dir: '/mnt/data/${DOMINO_PROJECT_NAME}/speech_id_checkpoint_vox1'
     restore: !!bool "false" #Resume training from previous model path
 ---
 test:
