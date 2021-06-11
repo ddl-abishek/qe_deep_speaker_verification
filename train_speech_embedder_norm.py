@@ -13,7 +13,7 @@ from torch.utils.tensorboard import SummaryWriter
 from datetime import datetime
 
 def train(model_path):
-	writer = SummaryWriter(log_dir='/mnt/data/qe_deep_speaker_verification/tensorboard_logs')
+	writer = SummaryWriter(log_dir='/mnt/data/$DOMINO_PROJECT_NAME/tensorboard_logs')
 	device = torch.device(hp.device)
 
 	if hp.data.data_preprocessed:
