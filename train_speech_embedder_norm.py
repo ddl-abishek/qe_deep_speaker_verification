@@ -13,7 +13,10 @@ from torch.utils.tensorboard import SummaryWriter
 from datetime import datetime
 
 def train(model_path):
-	writer = SummaryWriter(log_dir=f"/mnt/data/{os.environ['DOMINO_PROJECT_NAME']}/tensorboard_logs")
+	log_dir=eval(hp.train.log_dir)
+	os.makedirs(log_dir, exist_ok=True)
+
+	writer = SummaryWriter(log_dir=log_dir)
 	device = torch.device(hp.device)
 
 	if hp.data.data_preprocessed:
