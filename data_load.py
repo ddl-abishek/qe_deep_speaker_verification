@@ -45,14 +45,14 @@ class SpeakerDatasetTIMITPreprocessed(Dataset):
         # data path
         if hp.training:
             if task == 'train':
-                self.path = hp.data.train_path
+                self.path = eval(hp.data.train_path)
                 self.utter_num = hp.train.M
             elif task == 'test':
-                self.path = hp.data.test_path
+                self.path = eval(hp.data.test_path)
                 self.utter_num = hp.test.M
 
         else:
-            self.path = hp.data.test_path
+            self.path = eval(hp.data.test_path)
             self.utter_num = hp.test.M
         self.file_list = os.listdir(self.path)
         self.shuffle=shuffle
