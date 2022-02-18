@@ -29,7 +29,7 @@ train:
     epochs: 5 #Max training speaker epoch 
     log_interval: 30 #Epochs before printing progress
     log_file: f"/mnt/data/{os.environ['DOMINO_PROJECT_NAME']}/speech_id_checkpoint_vox1/Stats"
-    log_dir: f"/mnt/data/{os.environ['DOMINO_PROJECT_NAME']}/tensorboard_logs"
+    log_dir: f"/mnt/data/{os.environ['DOMINO_PROJECT_NAME']}/scratch/tensorboard_logs"
     checkpoint_interval: 1 #Save model after x speaker epochs
     checkpoint_dir: f"/mnt/data/{os.environ['DOMINO_PROJECT_NAME']}/speech_id_checkpoint_vox1"
     restore: !!bool "false" #Resume training from previous model path
